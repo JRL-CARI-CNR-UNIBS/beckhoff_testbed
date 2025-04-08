@@ -1,0 +1,71 @@
+# This config file is used by ros2_control to configure the controller manager and the individual controllers.
+
+controller_manager:
+  ros__parameters:
+    update_rate: 1000  # Control loop frequency in Hz. Higher rate = faster updates (e.g., for EtherCAT).
+
+    # The following entries define the available controllers and their types.
+
+    digital_io_controller:
+      type: ethercat_utils/GPIOController  # Custom controller to manage digital I/O via EtherCAT
+
+    brushless_controller:
+      type: ethercat_utils/GPIOController  # Custom controller used to drive a brushless motor
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster  # Standard controller that publishes joint states to /joint_states
+
+
+# Configuration for the joint_state_broadcaster controller
+joint_state_broadcaster:
+  ros__parameters:
+    joints:
+      - joint_1  # List of joints to broadcast (can include more as needed)
+    interfaces:
+      - position  # Broadcast position interface of the joint
+      - velocity  # Broadcast velocity interface of the joint
+      - effort    # Broadcast effort (torque/force) interface of the joint
+
+
+# Configuration for the digital_io_controller
+digital_io_controller:
+  ros__parameters:
+    outputs:
+      # List of digital outputs controlled by this node
+      - gpio/do0
+      - gpio/do1
+      - gpio/do2
+      - gpio/do3
+      - gpio/do4
+      - gpio/do5
+      - gpio/do6
+      - gpio/do7
+    inputs:
+      # List of digital inputs read by this node
+      - gpio/di0
+      - gpio/di1
+      - gpio/di2
+      - gpio/di3
+      - gpio/di4
+      - gpio/di5
+      - gpio/di6
+      - gpio/di7
+
+
+# Configuration for the brushless_controller
+brushless_controller:
+  ros__parameters:
+    joints:
+      - joint_1  # Joint controlled by the brushless motor (could be more if extended)
+    outputs:
+      # List of command signals sent to the brushless motor
+      - joint_1/ctrl_word    # Control word (usually used for state transitions)
+      - joint_1/moo          # Mode of operation (e.g., profile position mode)
+      - joint_1/position     # Desired position to reach
+    inputs:
+      # List of feedback signals received from the brushless motor
+      - joint_1/status_word   # Status word (indicates current state)
+      - joint_1/moo_display   # Current mode of operation reported by the device
+      - joint_1/position      # Actual position
+      - joint_1/velocity      # Actual velocity
+      - joint_1/effort        # Estimated or measured torque/effort

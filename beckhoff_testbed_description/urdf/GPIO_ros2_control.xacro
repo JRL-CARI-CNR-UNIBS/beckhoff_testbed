@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="GPIO_ros2_control" params="name:=''">
+
+
+      <gpio name="gpio">
+        <command_interface name="do0"/>
+        <command_interface name="do1"/>
+        <command_interface name="do2"/>
+        <command_interface name="do3"/>
+        <command_interface name="do4"/>
+        <command_interface name="do5"/>
+        <command_interface name="do6"/>
+        <command_interface name="do7"/>
+        <state_interface name="di0"/>
+        <state_interface name="di1"/>
+        <state_interface name="di2"/>
+        <state_interface name="di3"/>
+        <state_interface name="di4"/>
+        <state_interface name="di5"/>
+        <state_interface name="di6"/>
+        <state_interface name="di7"/>
+        <ec_module name="EL1859">
+          <plugin>ethercat_generic_plugins/GenericEcSlave</plugin>
+          <param name="alias">0</param>
+          <param name="position">1</param>
+          <param name="slave_config">$(find beckhoff_testbed_description)/config/ethercat/EL1859_ethercat_config.yaml</param>
+        </ec_module>
+      </gpio>
+
+    <!-- </ros2_control> -->
+
+  </xacro:macro>
+
+</robot>

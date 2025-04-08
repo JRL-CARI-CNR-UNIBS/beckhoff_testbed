@@ -1,0 +1,14 @@
+delta_utils:
+  ros__parameters:
+    control_word:
+      controller_name: brushless_controller
+      command_interface: joint_1/ctrl_word
+    status_word:
+      controller_name: brushless_controller
+      state_interface: joint_1/status_word
+    mode_of_operation:
+      controller_name: brushless_controller
+      command_interface: joint_1/moo
+    mode_of_operation_display:
+      controller_name: brushless_controller
+      state_interface: joint_1/moo_display

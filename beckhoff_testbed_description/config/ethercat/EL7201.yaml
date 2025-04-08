@@ -1,0 +1,39 @@
+sdo:
+  - {index: 0x7010, sub_index: 0x0003, type: uint8, value: 8}  # Modes of operation
+  - {index: 0x7010, sub_index: 0x000B, type: uint16, value: 2952}  # DRV Outputs / Torque limitation
+  - {index: 0x8000, sub_index: 0x0001, type: uint8, value: 0}  # FB Settings / Invert feedback direction
+  - {index: 0x8010, sub_index: 0x0012, type: uint16, value: 5}  # DRV Amplifier Settings / Current loop integral time
+  - {index: 0x8010, sub_index: 0x0013, type: uint16, value: 178}  # DRV Amplifier Settings / Current loop proportional gain
+  - {index: 0x8010, sub_index: 0x0014, type: uint32, value: 150}  # DRV Amplifier Settings / Velocity loop integral time
+  - {index: 0x8010, sub_index: 0x0015, type: uint32, value: 43}  # DRV Amplifier Settings / Velocity loop proportional gain
+  - {index: 0x8010, sub_index: 0x0017, type: uint32, value: 10}  # Position loop proportional gain
+  - {index: 0x8010, sub_index: 0x0019, type: uint32, value: 24000}  # Nominal DC link voltage
+  - {index: 0x8010, sub_index: 0x0031, type: uint32, value: 262144}  # Velocity limitation
+  - {index: 0x8011, sub_index: 0x0011, type: uint32, value: 8600}  # DRV Motor Settings / Max current
+  - {index: 0x8011, sub_index: 0x0012, type: uint32, value: 2710}  # DRV Motor Settings / Rated current
+  - {index: 0x8011, sub_index: 0x0013, type: uint8, value: 3}  # DRV Motor Settings / Motor pole pairs
+  - {index: 0x8011, sub_index: 0x0015, type: uint16, value: 270}  # DRV Motor Settings / Commutation offset
+  - {index: 0x8011, sub_index: 0x0016, type: uint32, value: 70}  # DRV Motor Settings / Torque constant
+  - {index: 0x8011, sub_index: 0x0018, type: uint32, value: 34}  # DRV Motor Settings / Rotor moment of inertia
+  - {index: 0x8011, sub_index: 0x0019, type: uint16, value: 15}  # DRV Motor Settings / Winding inductance
+  - {index: 0x8011, sub_index: 0x001B, type: uint32, value: 1961}  # DRV Motor Settings / Motor speed limitation
+  - {index: 0x8011, sub_index: 0x002B, type: uint16, value: 1200}  # DRV Motor Settings / Motor Temperature warn level
+  - {index: 0x8011, sub_index: 0x002C, type: uint16, value: 1400}  # DRV Motor Settings / Motor Temperature error level
+  - {index: 0x8011, sub_index: 0x002D, type: uint16, value: 341}  # DRV Motor Settings / Motor thermal time constant
+rpdo:
+  - index: 0x1600
+    channels:
+      - {index: 0x7010, sub_index: 0x0001, type: uint16, command_interface: unknown, default: 0}  #Controlword
+  - index: 0x1606
+    channels:
+      - {index: 0x7010, sub_index: 0x0005, type: uint32, command_interface: unknown, default: .nan}  #Target position
+tpdo:
+  - index: 0x1A00
+    channels:
+      - {index: 0x6000, sub_index: 0x0011, type: uint32, state_interface: unknown, factor: 1.0}  #Position
+  - index: 0x1A01
+    channels:
+      - {index: 0x6010, sub_index: 0x0001, type: uint16, state_interface: unknown, factor: 1.0}  #Statusword
+  - index: 0x1A06
+    channels:
+      - {index: 0x6010, sub_index: 0x0006, type: int32, state_interface: unknown, factor: 1.0}  #Following error actual value

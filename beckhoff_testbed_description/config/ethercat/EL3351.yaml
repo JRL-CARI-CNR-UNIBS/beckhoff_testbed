@@ -1,0 +1,22 @@
+sdo:
+  - {index: 0x1C12, sub_index: 0x0000, type: uint8, value: 0}  # clear sm pdos (0x1C12)
+  - {index: 0x1C13, sub_index: 0x0000, type: uint8, value: 0}  # clear sm pdos (0x1C13)
+  - {index: 0x1C13, sub_index: 0x0001, type: uint16, value: 6656}  # download pdo 0x1C13:01 index
+  - {index: 0x1C13, sub_index: 0x0002, type: uint16, value: 6657}  # download pdo 0x1C13:02 index
+tpdo:
+  - index: 0x1A00
+    channels:
+      - {index: 0x6000, sub_index: 0x0001, type: bool, state_interface: unknown, factor: 1.0}  #Underrange
+      - {index: 0x6000, sub_index: 0x0002, type: bool, state_interface: unknown, factor: 1.0}  #Overrange
+      - {index: 0x6000, sub_index: 0x0007, type: bool, state_interface: unknown, factor: 1.0}  #Error
+      - {index: 0x1800, sub_index: 0x0007, type: bool, state_interface: unknown, factor: 1.0}  #TxPDO State
+      - {index: 0x1800, sub_index: 0x0009, type: bool, state_interface: unknown, factor: 1.0}  #TxPDO Toggle
+      - {index: 0x6000, sub_index: 0x0011, type: int32, state_interface: unknown, factor: 1.0}  #Value
+  - index: 0x1A01
+    channels:
+      - {index: 0x6010, sub_index: 0x0001, type: bool, state_interface: unknown, factor: 1.0}  #Underrange
+      - {index: 0x6010, sub_index: 0x0002, type: bool, state_interface: unknown, factor: 1.0}  #Overrange
+      - {index: 0x6010, sub_index: 0x0007, type: bool, state_interface: unknown, factor: 1.0}  #Error
+      - {index: 0x1801, sub_index: 0x0007, type: bool, state_interface: unknown, factor: 1.0}  #TxPDO State
+      - {index: 0x1801, sub_index: 0x0009, type: bool, state_interface: unknown, factor: 1.0}  #TxPDO Toggle
+      - {index: 0x6010, sub_index: 0x0011, type: int32, state_interface: unknown, factor: 1.0}  #Value

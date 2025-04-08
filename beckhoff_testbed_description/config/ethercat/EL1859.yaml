@@ -1,0 +1,50 @@
+rpdo:
+  - index: 0x1608
+    channels:
+      - {index: 0x7080, sub_index: 0x0001, type: bool, command_interface: unknown, default: .nan}  #Output
+  - index: 0x1609
+    channels:
+      - {index: 0x7090, sub_index: 0x0001, type: bool, command_interface: unknown, default: .nan}  #Output
+  - index: 0x160A
+    channels:
+      - {index: 0x70A0, sub_index: 0x0001, type: bool, command_interface: unknown, default: .nan}  #Output
+  - index: 0x160B
+    channels:
+      - {index: 0x70B0, sub_index: 0x0001, type: bool, command_interface: unknown, default: .nan}  #Output
+  - index: 0x160C
+    channels:
+      - {index: 0x70C0, sub_index: 0x0001, type: bool, command_interface: unknown, default: .nan}  #Output
+  - index: 0x160D
+    channels:
+      - {index: 0x70D0, sub_index: 0x0001, type: bool, command_interface: unknown, default: .nan}  #Output
+  - index: 0x160E
+    channels:
+      - {index: 0x70E0, sub_index: 0x0001, type: bool, command_interface: unknown, default: .nan}  #Output
+  - index: 0x160F
+    channels:
+      - {index: 0x70F0, sub_index: 0x0001, type: bool, command_interface: unknown, default: .nan}  #Output
+tpdo:
+  - index: 0x1A00
+    channels:
+      - {index: 0x6000, sub_index: 0x0001, type: bool, state_interface: unknown, factor: 1.0}  #Input
+  - index: 0x1A01
+    channels:
+      - {index: 0x6010, sub_index: 0x0001, type: bool, state_interface: unknown, factor: 1.0}  #Input
+  - index: 0x1A02
+    channels:
+      - {index: 0x6020, sub_index: 0x0001, type: bool, state_interface: unknown, factor: 1.0}  #Input
+  - index: 0x1A03
+    channels:
+      - {index: 0x6030, sub_index: 0x0001, type: bool, state_interface: unknown, factor: 1.0}  #Input
+  - index: 0x1A04
+    channels:
+      - {index: 0x6040, sub_index: 0x0001, type: bool, state_interface: unknown, factor: 1.0}  #Input
+  - index: 0x1A05
+    channels:
+      - {index: 0x6050, sub_index: 0x0001, type: bool, state_interface: unknown, factor: 1.0}  #Input
+  - index: 0x1A06
+    channels:
+      - {index: 0x6060, sub_index: 0x0001, type: bool, state_interface: unknown, factor: 1.0}  #Input
+  - index: 0x1A07
+    channels:
+      - {index: 0x6070, sub_index: 0x0001, type: bool, state_interface: unknown, factor: 1.0}  #Input

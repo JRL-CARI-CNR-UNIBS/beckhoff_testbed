@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<robot name="battery_cell" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:arg name="use_ethercat_fake_hardware" default="false"/>
+
+  <!-- Include ROS2 HW interface definitions for GPIO modules -->
+  <xacro:include filename="$(find beckhoff_testbed_description)/urdf/ethercat_ros2_control.xacro"/>
+  <xacro:ethercat_ros2_control use_fake_hardware="$(arg use_ethercat_fake_hardware)"/>
+
+  <link name="world"/>
+
+</robot>
