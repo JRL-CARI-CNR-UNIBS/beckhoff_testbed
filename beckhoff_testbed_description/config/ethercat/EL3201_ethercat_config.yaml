@@ -1,0 +1,20 @@
+vendor_id: 0x00000002
+product_id: 0x0c813052
+
+tpdo:
+  - index: 0x1A00
+    channels:
+      - {index: 0x6000, sub_index: 0x0001, type: bool, state_interface: unknown, factor: 1.0}  #Status__Underrange
+      - {index: 0x6000, sub_index: 0x0002, type: bool, state_interface: unknown, factor: 1.0}  #Status__Overrange
+      - {index: 0x6000, sub_index: 0x0003, type: uint2, state_interface: unknown, factor: 1.0}  #Status__Limit 1
+      - {index: 0x6000, sub_index: 0x0005, type: uint2, state_interface: unknown, factor: 1.0}  #Status__Limit 2
+      - {index: 0x6000, sub_index: 0x0007, type: bool, state_interface: unknown, factor: 1.0}  #Status__Error
+      - {index: 0x1800, sub_index: 0x0007, type: bool, state_interface: unknown, factor: 1.0}  #Status__TxPDO State
+      - {index: 0x1800, sub_index: 0x0009, type: bool, state_interface: unknown, factor: 1.0}  #Status__TxPDO Toggle
+      - {index: 0x6000, sub_index: 0x0011, type: int16, state_interface: temperature, factor: 1.0}  #Value
+
+sm:  # Sync Manager
+  - {index: 0, type: output, pdo: ~, watchdog: disable}
+  - {index: 1, type: input, pdo: ~, watchdog: disable}
+  - {index: 2, type: output, pdo: ~, watchdog: disable}
+  - {index: 3, type: input,  pdo: tpdo, watchdog: disable}

@@ -3,6 +3,7 @@
 vendor_id: 0x00000002
 product_id: 0x1c213052
 assign_activate: 0x0700  # DC Synch register
+
 sdo:
   - {index: 0x7010, sub_index: 0x0003, type: uint8, value: 8}  # Modes of operation
   - {index: 0x7010, sub_index: 0x000B, type: uint16, value: 2952}  # DRV Outputs / Torque limitation
@@ -31,14 +32,14 @@ rpdo:
       - {index: 0x7010, sub_index: 0x0001, type: uint16, command_interface: ctrl_word, default: 0}  #Controlword
   - index: 0x1606
     channels:
-      - {index: 0x7010, sub_index: 0x0005, type: uint32, command_interface: position, default: 0}  #Target position
+      - {index: 0x7010, sub_index: 0x0005, type: int32, command_interface: position, default: 0, factor: 1.0e-3}  #Target position
   - index: 0x1608
     channels:
       - {index: 0x7010, sub_index: 0x0003, type: uint8, command_interface: moo, default: 8}  #Modes of operation
 tpdo:
   - index: 0x1A00
     channels:
-      - {index: 0x6000, sub_index: 0x0011, type: uint32, state_interface: position, factor: 1.0}  #Position
+      - {index: 0x6000, sub_index: 0x0011, type: int32, state_interface: position, factor: 1.0e-3}  #Position
   - index: 0x1A01
     channels:
       - {index: 0x6010, sub_index: 0x0001, type: uint16, state_interface: status_word}  #Statusword
@@ -221,5 +222,5 @@ available_tpdo:
 sm:  # Sync Manager
   - {index: 0, type: output, pdo: ~, watchdog: disable}
   - {index: 1, type: input, pdo: ~, watchdog: disable}
-  - {index: 2, type: output, pdo: rpdo, watchdog: enable}
-  - {index: 3, type: input,  pdo: tpdo, watchdog: enable}
+  - {index: 2, type: output, pdo: rpdo, watchdog: disable}
+  - {index: 3, type: input,  pdo: tpdo, watchdog: disable}

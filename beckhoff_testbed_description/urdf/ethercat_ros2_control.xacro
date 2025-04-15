@@ -18,10 +18,10 @@
         </xacro:unless>
       </hardware>
 
-       <xacro:include filename="$(find beckhoff_testbed_description)/urdf/GPIO_ros2_control.xacro"/>
-       <xacro:GPIO_ros2_control name="${name}_gpio"/>
+       <xacro:include filename="$(find beckhoff_testbed_description)/urdf/el1859_ros2_control.xacro"/>
+       <xacro:el1859 name="${name}_el1859"/>
        <xacro:include filename="$(find beckhoff_testbed_description)/urdf/el7201_ros2_control.xacro"/>
-       <xacro:el7201 name="${name}_gpio"/>
+       <xacro:el7201 name="${name}_el7201"/>
 
 
     </ros2_control>

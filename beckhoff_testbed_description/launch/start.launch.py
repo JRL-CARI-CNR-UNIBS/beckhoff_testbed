@@ -133,6 +133,14 @@ def launch_setup(context, *args, **kwargs):
         ]
     )
 
+    brushless_pos_controller_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=[
+            "position_controller",
+            "--controller-manager", "/controller_manager"
+        ]
+    )
     # Collect all the nodes and spawners to be launched
     what_to_launch = [
         control_node,
@@ -140,6 +148,7 @@ def launch_setup(context, *args, **kwargs):
         joint_state_broadcaster_spawner,
         digital_io_controller_spawner,
         brushless_controller_spawner,
+        brushless_pos_controller_spawner,
     ]
 
     return what_to_launch

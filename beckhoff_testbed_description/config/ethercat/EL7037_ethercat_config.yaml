@@ -1,0 +1,85 @@
+# Configuration file for EL7201 drive
+
+
+vendor_id: 0x00000002
+product_id: 0x1b7d3052
+assign_activate: 0x0300  # DC Synch register
+
+
+
+
+
+
+
+sdo:
+  - {index: 0x8010, sub_index: 0x0001, type: uint16, value: 1000}  # Maximal current
+  - {index: 0x8010, sub_index: 0x0002, type: uint16, value: 500}  # Reduced current
+  - {index: 0x8010, sub_index: 0x0003, type: uint16, value: 2400}  # Nominal voltage
+  - {index: 0x8010, sub_index: 0x0004, type: uint16, value: 480}  # Motor coil resistance
+  - {index: 0x8010, sub_index: 0x0005, type: uint16, value: 440}  # Motor EMF
+  - {index: 0x8010, sub_index: 0x0006, type: uint16, value: 200}  # Motor fullsteps
+  - {index: 0x8010, sub_index: 0x0007, type: uint16, value: 4096}  # Encoder increments (4-fold)
+  - {index: 0x8010, sub_index: 0x000A, type: uint16, value: 950}  # Motor coil inductance
+  - {index: 0x8011, sub_index: 0x0001, type: uint16, value: 596}  # Kp factor (curr.)
+  - {index: 0x8011, sub_index: 0x0002, type: uint16, value: 169}  # Ki factor (curr.)
+  - {index: 0x8012, sub_index: 0x0001, type: uint8, value: 5}  # Operation mode
+  - {index: 0x8012, sub_index: 0x0005, type: uint8, value: 1}  # Speed range
+  - {index: 0x8012, sub_index: 0x0008, type: uint8, value: 0}  # Feedback type
+  - {index: 0x8014, sub_index: 0x0002, type: uint16, value: 500}  # Kp factor (pos.)
+  - {index: 0x8014, sub_index: 0x0003, type: uint32, value: 200}  # Kp factor (velo.)
+  - {index: 0x8014, sub_index: 0x0004, type: uint16, value: 500}  # Tn (velo.)
+rpdo:
+  - index: 0x1601
+    channels:
+      - {index: 0x7000, sub_index: 0x0001, type: bool, command_interface: unknown, default: 0}  #Control__Enable latch C
+      - {index: 0x7000, sub_index: 0x0002, type: bool, command_interface: unknown, default: 0}  #Control__Enable latch extern on positive edge
+      - {index: 0x7000, sub_index: 0x0003, type: bool, command_interface: unknown, default: 0}  #Control__Set counter
+      - {index: 0x7000, sub_index: 0x0004, type: bool, command_interface: unknown, default: 0}  #Control__Enable latch extern on negative edge
+      - {index: 0x7000, sub_index: 0x0011, type: uint32, command_interface: unknown, default: .nan}  #Set counter value
+  - index: 0x1602
+    channels:
+      - {index: 0x7010, sub_index: 0x0001, type: bool, command_interface: unknown, default: 0}  #Control__Enable
+      - {index: 0x7010, sub_index: 0x0002, type: bool, command_interface: unknown, default: 0}  #Control__Reset
+      - {index: 0x7010, sub_index: 0x0003, type: bool, command_interface: unknown, default: 0}  #Control__Reduce torque
+      - {index: 0x7010, sub_index: 0x000C, type: bool, command_interface: unknown, default: 0}  #Control__Digital output 1
+  - index: 0x1603
+    channels:
+      - {index: 0x7010, sub_index: 0x0011, type: uint32, command_interface: unknown, default: .nan}  #Position
+tpdo:
+  - index: 0x1A01
+    channels:
+      - {index: 0x6000, sub_index: 0x0001, type: bool, state_interface: unknown, factor: 1.0}  #Status__Latch C valid
+      - {index: 0x6000, sub_index: 0x0002, type: bool, state_interface: unknown, factor: 1.0}  #Status__Latch extern valid
+      - {index: 0x6000, sub_index: 0x0003, type: bool, state_interface: unknown, factor: 1.0}  #Status__Set counter done
+      - {index: 0x6000, sub_index: 0x0004, type: bool, state_interface: unknown, factor: 1.0}  #Status__Counter underflow
+      - {index: 0x6000, sub_index: 0x0005, type: bool, state_interface: unknown, factor: 1.0}  #Status__Counter overflow
+      - {index: 0x6000, sub_index: 0x0008, type: bool, state_interface: unknown, factor: 1.0}  #Status__Extrapolation stall
+      - {index: 0x6000, sub_index: 0x0009, type: bool, state_interface: unknown, factor: 1.0}  #Status__Status of input A
+      - {index: 0x6000, sub_index: 0x000A, type: bool, state_interface: unknown, factor: 1.0}  #Status__Status of input B
+      - {index: 0x6000, sub_index: 0x000B, type: bool, state_interface: unknown, factor: 1.0}  #Status__Status of input C
+      - {index: 0x6000, sub_index: 0x000D, type: bool, state_interface: unknown, factor: 1.0}  #Status__Status of extern latch
+      - {index: 0x6000, sub_index: 0x000E, type: bool, state_interface: unknown, factor: 1.0}  #Status__Sync error
+      - {index: 0x6000, sub_index: 0x0010, type: bool, state_interface: unknown, factor: 1.0}  #Status__TxPDO Toggle
+      - {index: 0x6000, sub_index: 0x0011, type: uint32, state_interface: unknown, factor: 1.0}  #Counter value
+      - {index: 0x6000, sub_index: 0x0012, type: uint32, state_interface: unknown, factor: 1.0}  #Latch value
+  - index: 0x1A03
+    channels:
+      - {index: 0x6010, sub_index: 0x0001, type: bool, state_interface: unknown, factor: 1.0}  #Status__Ready to enable
+      - {index: 0x6010, sub_index: 0x0002, type: bool, state_interface: unknown, factor: 1.0}  #Status__Ready
+      - {index: 0x6010, sub_index: 0x0003, type: bool, state_interface: unknown, factor: 1.0}  #Status__Warning
+      - {index: 0x6010, sub_index: 0x0004, type: bool, state_interface: unknown, factor: 1.0}  #Status__Error
+      - {index: 0x6010, sub_index: 0x0005, type: bool, state_interface: unknown, factor: 1.0}  #Status__Moving positive
+      - {index: 0x6010, sub_index: 0x0006, type: bool, state_interface: unknown, factor: 1.0}  #Status__Moving negative
+      - {index: 0x6010, sub_index: 0x0007, type: bool, state_interface: unknown, factor: 1.0}  #Status__Torque reduced
+      - {index: 0x6010, sub_index: 0x0008, type: bool, state_interface: unknown, factor: 1.0}  #Status__Motor stall
+      - {index: 0x6010, sub_index: 0x000C, type: bool, state_interface: unknown, factor: 1.0}  #Status__Digital input 1
+      - {index: 0x6010, sub_index: 0x000D, type: bool, state_interface: unknown, factor: 1.0}  #Status__Digital input 2
+      - {index: 0x6010, sub_index: 0x000E, type: bool, state_interface: unknown, factor: 1.0}  #Status__Sync error
+      - {index: 0x6010, sub_index: 0x0010, type: bool, state_interface: unknown, factor: 1.0}  #Status__TxPDO Toggle
+
+
+sm:  # Sync Manager
+  - {index: 0, type: output, pdo: ~, watchdog: disable}
+  - {index: 1, type: input, pdo: ~, watchdog: disable}
+  - {index: 2, type: output, pdo: rpdo, watchdog: disable}
+  - {index: 3, type: input,  pdo: tpdo, watchdog: disable}

@@ -15,15 +15,9 @@ class BrushlessInterfaceNode(Node):
         self.status_word = None
         self.moo_display = None
 
-        self.subscription = self.create_subscription(
-            InterfaceValue,
-            '/brushless_controller/inputs',
-            self.inputs_callback,
-            10)
-
         self.publisher = self.create_publisher(
             GPIOArray,
-            '/brushless_controller/commands',
+            '/position_controller/commands',
             10)
 
         # Start thread for keyboard input
@@ -69,4 +63,3 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
-

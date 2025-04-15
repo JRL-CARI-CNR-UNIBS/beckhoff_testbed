@@ -12,6 +12,9 @@ controller_manager:
     brushless_controller:
       type: ethercat_utils/GPIOController  # Custom controller used to drive a brushless motor
 
+    position_controller:
+      type: ethercat_utils/GPIOController  # Custom controller used to drive a brushless motor
+
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster  # Standard controller that publishes joint states to /joint_states
 
@@ -61,11 +64,26 @@ brushless_controller:
       # List of command signals sent to the brushless motor
       - joint_1/ctrl_word    # Control word (usually used for state transitions)
       - joint_1/moo          # Mode of operation (e.g., profile position mode)
-      - joint_1/position     # Desired position to reach
     inputs:
       # List of feedback signals received from the brushless motor
       - joint_1/status_word   # Status word (indicates current state)
       - joint_1/moo_display   # Current mode of operation reported by the device
+      - joint_1/position      # Actual position
+      - joint_1/velocity      # Actual velocity
+      - joint_1/effort        # Estimated or measured torque/effort
+
+
+
+# Configuration for the brushless_controller
+position_controller:
+  ros__parameters:
+    joints:
+      - joint_1  # Joint controlled by the brushless motor (could be more if extended)
+    outputs:
+      # List of command signals sent to the brushless motor
+      - joint_1/position     # Desired position to reach
+    inputs:
+      # List of feedback signals received from the brushless motor
       - joint_1/position      # Actual position
       - joint_1/velocity      # Actual velocity
       - joint_1/effort        # Estimated or measured torque/effort
